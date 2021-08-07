@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>Slide Demo</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            *{  
+                margin: 0xp;
+                padding:0px;
+                box-sizing: border-box;
+            }
+            .main{
+                display: flex;
+                align-items: center;
+            }
+            .slide{
+                width:442px;
+                padding:0 10px;
+                overflow-x: hidden;
+            }
+            ul{ 
+                display: flex;
+                white-space: nowrap;
+            }
+            li{
+                display:inline-block;
+                height: 50px;
+                padding:10px;
+                margin-right:10px;
+                border: 1px solid #a99d9d;
+            }
+
+            button{
+                margin: 0 20px;
+                padding:10px;
+            }
+        </style>
+        <script>
+            $(function(){
+                $('.left').click(function(){
+                    let nowX = $('ul').css('margin-left');
+                    nowX = Number(nowX.split('px')[0]);
+                    if(nowX >=-216){
+                        $('ul').animate({marginLeft:`${(nowX*100-72*100)/100}px`});
+                    }                    
+                });
+
+                $('.right').click(function(){
+                    let nowX = $('ul').css('margin-left');
+                    nowX = Number(nowX.split('px')[0]);
+                    if(nowX <=-72){
+                        $('ul').animate({marginLeft:`${(nowX*100+72*100)/100}px`});
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="main">
+            <div>
+                <button class="left">Left</button>
+            </div>
+            <div class="slide">
+                <div class="menu">
+                    <ul>
+                        <li>選單1</li>
+                        <li>選單2</li>
+                        <li>選單3</li>
+                        <li>選單4</li>
+                        <li>選單5</li>
+                        <li>選單6</li>
+                        <li>選單7</li>
+                        <li>選單8</li>
+                        <li>選單9</li>
+                        <li>選單10</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <button class="right">Right</button>
+            </div>
+            
+        </div>
+    </body>
+</html>
