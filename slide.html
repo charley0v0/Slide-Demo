@@ -1,37 +1,22 @@
 <html>
     <head>
         <title>Slide Demo</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
         <style>
-            *{  
-                margin: 0xp;
-                padding:0px;
-                box-sizing: border-box;
-            }
-            .main{
+            li{
                 display: flex;
+                justify-content: center;
                 align-items: center;
             }
-            .slide{
-                width:442px;
-                padding:0 10px;
-                overflow-x: hidden;
+            .splide__track{
+                width: 80%;
+                margin: 0 auto;
             }
-            ul{ 
-                display: flex;
-                white-space: nowrap;
-            }
-            li{
-                display:inline-block;
-                height: 50px;
-                padding:10px;
-                margin-right:10px;
-                border: 1px solid #a99d9d;
-            }
-
-            button{
-                margin: 0 20px;
-                padding:10px;
+            .active-menu{
+                font-weight: 800;
+                font-size: 24px;
             }
         </style>
         <script>
@@ -51,11 +36,27 @@
                         $('ul').animate({marginLeft:`${(nowX*100+72*100)/100}px`});
                     }
                 });
+
+                var splide = new Splide( '.splide', {
+                    type     : 'loop',
+                    width    :'500px',
+                    height   : '30px',
+                    focus    : 'center',
+                    perPage: 3,
+                    pagination:false
+                } ).mount();
+                $('li.is-active').addClass('active-menu');
+
+                splide.on( 'moved', function() {
+                    $('li').removeClass('active-menu');
+                   $('li.is-active').addClass('active-menu');
+                } );
             });
+
         </script>
     </head>
     <body>
-        <div class="main">
+        <!-- <div class="main">
             <div>
                 <button class="left">Left</button>
             </div>
@@ -79,6 +80,23 @@
                 <button class="right">Right</button>
             </div>
             
+        </div> -->
+
+        <div class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide">Slide 01</li>
+                    <li class="splide__slide">Slide 02</li>
+                    <li class="splide__slide">Slide 03</li>
+                    <li class="splide__slide">Slide 04</li>
+                    <li class="splide__slide">Slide 05</li>
+                    <li class="splide__slide">Slide 06</li>
+                    <li class="splide__slide">Slide 07</li>
+                    <li class="splide__slide">Slide 08</li>
+                    <li class="splide__slide">Slide 09</li>
+                    <li class="splide__slide">Slide 10</li>
+                </ul>
+            </div>
         </div>
     </body>
 </html>
